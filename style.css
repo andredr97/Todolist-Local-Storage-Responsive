@@ -233,7 +233,7 @@ input:checked ~ .bubble::after {
   color: var(--grey);
 }
 
-@media screen and (max-width: 513px) {
+@media screen and (max-width: 625px) {
   .todo-item {
     display: flex;
   }
