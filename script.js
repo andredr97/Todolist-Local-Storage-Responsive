@@ -24,6 +24,8 @@ window.addEventListener('load', () => {
         if (nameInput.value == '') {
             alert('Please enter your name');
             nameInput.focus();
+            todos = todos.filter(t => t != todo);
+            localStorage.setItem('todos', JSON.stringify(todos));
             return;
         }
 
