@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
 
     const nameInput = document.getElementById('name');
     const newTodoForm = document.getElementById('new-todo-form');
+    const contentText = document.getElementById('content');
 
     // mengambil value userName memasukan ke dalam local storage 
     const userName = localStorage.getItem('username') || '';
@@ -29,6 +30,7 @@ window.addEventListener('load', () => {
             return;
         }
 
+
         const todo = {
             content: e.target.elements.content.value,
             category: e.target.elements.category.value,
@@ -36,11 +38,26 @@ window.addEventListener('load', () => {
             createAt: new Date().getTime()
         }
 
+        if (contentText.value == '') {
+            alert('Please enter a new todo');
+            todos = todos.filter(t => t != todo);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            contentText.focus();
+            return;
+        } else if (todo.category == '') {
+            alert('Please enter a category todo');
+            todos = todos.filter(t => t != todo);
+            localStorage.setItem('todos', JSON.stringify(todos));
+            todo.category.focus();
+            return;
+        }
+
         todos.push(todo);
         // memasukan value todo ke local storage dan di ubah dari object ke string
         localStorage.setItem('todos', JSON.stringify(todos));
 
         e.target.reset();
+
 
         displayTodos();
     });
@@ -50,6 +67,7 @@ function displayTodos() {
     const todoList = document.getElementById('todo-list');
 
     todoList.innerHTML = '';
+
 
     todos.forEach(todo => {
         const todoItem = document.createElement('div');
@@ -62,6 +80,7 @@ function displayTodos() {
         const actions = document.createElement('div');
         const editBtn = document.createElement('button');
         const deleteBtn = document.createElement('button');
+
 
         input.type = 'checkbox';
         input.checked = todo.done;
