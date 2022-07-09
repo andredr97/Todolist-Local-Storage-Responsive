@@ -183,6 +183,7 @@ input:checked ~ .bubble::after {
   border-radius: 0rem;
   box-shadow: var(--shadow);
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 .todo-item label {
@@ -232,12 +233,18 @@ input:checked ~ .bubble::after {
   color: var(--grey);
 }
 
-@media only screen and (max-width: 480px) {
-  .todo-item .actions {
+@media screen and (max-width: 343px) {
+  .todo-item {
     display: flex;
+  }
+
+  .todo-content input {
+    width: 70%;
+  }
+
+  .todo-item .actions {
     flex-direction: column;
     align-items: center;
-    width: 5rem;
   }
 
   .todo-item .actions .edit {
@@ -246,6 +253,10 @@ input:checked ~ .bubble::after {
     width: 100%;
   }
   .todo-item .actions .delete {
+    width: 100%;
+  }
+
+  section {
     width: 100%;
   }
 }

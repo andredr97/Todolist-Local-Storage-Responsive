@@ -24,6 +24,7 @@ window.addEventListener('load', () => {
         if (nameInput.value == '') {
             alert('Please enter your name');
             nameInput.focus();
+            return;
         }
 
         const todo = {
